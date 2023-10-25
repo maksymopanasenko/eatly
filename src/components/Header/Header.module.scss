@@ -1,0 +1,27 @@
+.Header {
+    padding: 48px 0 25px;
+}
+
+.HeaderBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.HeaderNavigation {
+    min-width: 590px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.HeaderLogo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #6C5FBC;
+    font-family: Poppins;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.3;
+}

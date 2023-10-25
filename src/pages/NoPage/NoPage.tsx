@@ -1,5 +1,5 @@
 function NoPage() {
-  return <div>Menu</div>;
+  return <div>NoPage</div>;
 }
 
 export default NoPage;
