@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.scss";
@@ -6,14 +7,17 @@ import Logo from "./icons/Logo.svg?react";
 import Container from "../Container/Container";
 import Burger from "./icons/menu.svg?react";
 import Button from "../Button/Button";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
-const MOBILE_BREAKPOINT = 768;
+const MOBILE_BREAKPOINT = 1024;
 
 function Header() {
   const [mobileView, setMobileView] = useState(window.innerWidth);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuOpen = () => setIsMenuOpen(!isMenuOpen);
 
   useEffect(() => {
-    // only for development
     setMobileView(window.innerWidth);
 
     const handleResize = () => {
@@ -25,7 +29,6 @@ function Header() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-    // only for development
   }, []);
 
   return (
@@ -37,12 +40,12 @@ function Header() {
               <Logo />
               <span>eatly</span>
             </Link>
-            <Navbar />
+            {mobileView >= MOBILE_BREAKPOINT && <Navbar />}
           </div>
 
           <div className={styles.HeaderButtons}>
             {mobileView <= MOBILE_BREAKPOINT ? (
-              <Burger />
+              <Burger onClick={handleMenuOpen} />
             ) : (
               <>
                 <Button style={{ backgroundColor: "unset", color: "#606060" }}>
@@ -58,6 +61,8 @@ function Header() {
           </div>
         </div>
       </Container>
+
+      {isMenuOpen && createPortal(<MobileMenu />, document.body)}
     </header>
   );
 }

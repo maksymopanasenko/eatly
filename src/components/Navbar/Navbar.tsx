@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
+import cn from "classnames";
 import styles from "./Navbar.module.scss";
 
-function Navbar() {
+type NavbarProps = {
+  mobile?: boolean;
+};
+
+function Navbar({ mobile }: NavbarProps) {
   return (
-    <ul className={styles.Navbar}>
+    <ul className={cn(styles.Navbar, { [styles.NavbarMobile]: mobile })}>
       <li>
         <Link to="/menu">Menu</Link>
       </li>

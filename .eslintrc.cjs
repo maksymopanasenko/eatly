@@ -31,6 +31,7 @@ module.exports = {
   ignorePatterns: ["vite.config.ts"],
   plugins: ["@typescript-eslint", "react", "prettier"],
   rules: {
+    "react/require-default-props": 0,
     "react/react-in-jsx-scope": 0,
     "prettier/prettier": [
       "error",
