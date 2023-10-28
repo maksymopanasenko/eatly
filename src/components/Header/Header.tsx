@@ -62,7 +62,8 @@ function Header() {
         </div>
       </Container>
 
-      {isMenuOpen && createPortal(<MobileMenu />, document.body)}
+      {isMenuOpen &&
+        createPortal(<MobileMenu onClose={handleMenuOpen} />, document.body)}
     </header>
   );
 }

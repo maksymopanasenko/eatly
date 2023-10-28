@@ -2,7 +2,12 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 116px;
+    top: -205px;
     padding: 10px;
+    transition: all .7s;
     background: #6C5FBC;
+}
+
+.MobileMenuVilible {
+    top: 0;
 }
