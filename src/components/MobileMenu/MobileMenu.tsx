@@ -1,6 +1,7 @@
 import cn from "classnames";
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
+import Close from "./icons/close.svg?react";
 import styles from "./MobileMenu.module.scss";
 
 type MobileMenuProps = {
@@ -17,7 +18,7 @@ function MobileMenu({ onClose }: MobileMenuProps) {
   ) => {
     const { target } = event;
     if (
-      !(target as HTMLElement).closest(`.${styles.DropdownClose}`) &&
+      !(target as HTMLElement).closest(`.${styles.MobileMenuClose}`) &&
       (target as HTMLElement).nodeName !== "A"
     )
       return;
@@ -36,13 +37,21 @@ function MobileMenu({ onClose }: MobileMenuProps) {
 
   return (
     <div
-      className={cn(styles.MobileMenu, { [styles.MobileMenuVilible]: slide })}
+      className={styles.MobileMenuOverlay}
       onClick={handleClose}
       onKeyUp={handleClose}
       role="button"
       tabIndex={0}
     >
-      <Navbar mobile />
+      <div
+        className={cn(styles.MobileMenu, { [styles.MobileMenuVilible]: slide })}
+      >
+        <Navbar mobile />
+
+        <button type="button" className={styles.MobileMenuClose}>
+          <Close />
+        </button>
+      </div>
     </div>
   );
 }

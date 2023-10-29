@@ -2,12 +2,36 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: -205px;
+    top: -240px;
     padding: 10px;
     transition: all .7s;
     background: #6C5FBC;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.MobileMenuOverlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.MobileMenuClose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: inherit;
+    background: inherit;
+    border: none;
+    opacity: 0;
 }
 
 .MobileMenuVilible {
     top: 0;
+    .MobileMenuClose {
+        opacity: 1;
+    }
 }
