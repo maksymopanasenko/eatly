@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.scss";
-import Logo from "./icons/Logo.svg?react";
+import Logo from "../../assets/icons/Logo.svg?react";
 import Container from "../Container/Container";
 import Burger from "./icons/menu.svg?react";
 import Button from "../Button/Button";
@@ -36,7 +36,7 @@ function Header() {
       <Container>
         <div className={styles.HeaderBody}>
           <div className={styles.HeaderNavigation}>
-            <Link to="/" className={styles.HeaderLogo}>
+            <Link to="/" className='Logo'>
               <Logo />
               <span>eatly</span>
             </Link>

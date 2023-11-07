@@ -1,0 +1,32 @@
+.Footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 96px 0 81px;
+    background: #EAEAEA;
+}
+
+.FooterNavigation {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #818181;
+}
+
+.FooterUnderNav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+.FooterSocial {
+    display: flex;
+    gap: 15px;
+
+    svg {
+        &:hover path{
+            fill: #6C5FBC;
+        }
+    }
+}
