@@ -36,3 +36,34 @@
         }
     }
 }
+
+.NavbarFooter {
+    gap: 70px;
+
+    @media (max-width: 1024px) {
+        gap: 50px;
+    }
+
+    a {
+        color: #999;
+
+        @media (max-width: 1024px) {
+            font-size: 13px;
+        }
+
+        @media (max-width: 575px) {
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        &:hover {
+            color: #6C5FBC;
+        }
+    }
+}
+
+.NavbarColumn {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 53px;
+}

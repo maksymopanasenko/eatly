@@ -5,11 +5,12 @@ import styles from "./Navbar.module.scss";
 type NavbarProps = {
   mobile?: boolean;
   isFooter?: boolean;
+  column?: boolean;
 };
 
-function Navbar({ mobile, isFooter }: NavbarProps) {
+function Navbar({ mobile, isFooter, column }: NavbarProps) {
   return (
-    <ul className={cn(styles.Navbar, { [styles.NavbarMobile]: mobile })}>
+    <ul className={cn(styles.Navbar, { [styles.NavbarMobile]: mobile }, { [styles.NavbarFooter]: isFooter }, { [styles.NavbarColumn]: column })}>
       {!isFooter &&
         (<li>
           <Link to="/menu">Menu</Link>
