@@ -1,0 +1,12 @@
+
+.SocialMedia {
+    display: flex;
+    gap: 15px;
+
+    svg {
+        &:hover path,
+        &:hover circle{
+            fill: #6C5FBC;
+        }
+    }
+}
