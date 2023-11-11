@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import Close from "./icons/close.svg?react";
+import {TfiClose as Close} from 'react-icons/tfi';
 import styles from "./MobileMenu.module.scss";
 
 type MobileMenuProps = {
@@ -49,7 +49,7 @@ function MobileMenu({ onClose }: MobileMenuProps) {
         <Navbar mobile />
 
         <button type="button" className={styles.MobileMenuClose}>
-          <Close />
+          <Close size={25} color="#ffffff"/>
         </button>
       </div>
     </div>

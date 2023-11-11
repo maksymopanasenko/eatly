@@ -2,13 +2,12 @@ import { Link } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
-import styles from "./Header.module.scss";
 import Logo from "../../assets/icons/Logo.svg?react";
 import Container from "../Container/Container";
-import Burger from "./icons/menu.svg?react";
-// import Button from "../Button/Button";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { RxHamburgerMenu as Burger} from 'react-icons/rx';
 import { Button } from "@mui/material";
+import styles from "./Header.module.scss";
 
 const MOBILE_BREAKPOINT = 1024;
 
@@ -46,11 +45,11 @@ function Header() {
 
           <div className={styles.HeaderButtons}>
             {mobileView <= MOBILE_BREAKPOINT ? (
-              <Burger onClick={handleMenuOpen} />
+              <Burger size={30} onClick={handleMenuOpen} />
             ) : (
               <>
-                <Button variant="text" color="secondary" sx={{px: 20, py: 12}} >Login</Button>
-                <Button variant="contained" color="primary" sx={{px: 20, py: 12}} >Sing up</Button>
+                <Button variant="text" color="secondary" sx={{ px: 20, py: 12 }} >Login</Button>
+                <Button variant="contained" color="primary" sx={{ px: 20, py: 12 }} >Sing up</Button>
               </>
             )}
           </div>
