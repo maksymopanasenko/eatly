@@ -6,21 +6,22 @@ type NavbarProps = {
   mobile?: boolean;
   isFooter?: boolean;
   column?: boolean;
+  onClose?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-function Navbar({ mobile, isFooter, column }: NavbarProps) {
+function Navbar({ mobile, isFooter, column, onClose }: NavbarProps) {
   return (
     <ul className={cn(styles.Navbar, { [styles.NavbarMobile]: mobile }, { [styles.NavbarFooter]: isFooter }, { [styles.NavbarColumn]: column })}>
       {!isFooter &&
         (<li>
-          <Link to="/menu">Menu</Link>
+          <Link to="/menu" onClick={onClose}>Menu</Link>
         </li>)
       }
       <li>
-        <Link to="/blog">Blog</Link>
+        <Link to="/blog" onClick={onClose}>Blog</Link>
       </li>
       <li>
-        <Link to="/pricing">Pricing</Link>
+        <Link to="/pricing" onClick={onClose}>Pricing</Link>
       </li>
       {isFooter &&
         (<li>
@@ -28,7 +29,7 @@ function Navbar({ mobile, isFooter, column }: NavbarProps) {
         </li>)
       }
       <li>
-        <Link to="/contact">Contact</Link>
+        <Link to="/contact" onClick={onClose}>Contact</Link>
       </li>
     </ul>
   );

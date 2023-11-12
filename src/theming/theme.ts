@@ -1,4 +1,18 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    greyBorder: {
+      main: string;
+      light: string;
+      dark: string;
+    };
+  }
+
+  interface PaletteOptions {
+    greyBorder: object;
+  }
+}
 
 export const theme = createTheme({
   palette: {
@@ -8,6 +22,9 @@ export const theme = createTheme({
     },
     secondary: {
       main: '#636363',
+    },
+    greyBorder: {
+      main: '#CBCBCB',
     },
   },
   typography: {

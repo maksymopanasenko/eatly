@@ -1,9 +1,6 @@
-
 .SocialMedia {
-    svg {
-        &:hover path,
-        &:hover circle{
-            fill: #6C5FBC;
-        }
+    &:hover path,
+    &:hover circle {
+        fill: #6C5FBC;
     }
 }

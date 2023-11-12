@@ -10,6 +10,8 @@ import Logo from "../../assets/icons/Logo.svg?react";
 import styles from './Footer.module.scss';
 import SocialMedia from "../SocialMedia/SocialMedia";
 
+import { Divider } from "@mui/material";
+
 const MOBILE_BREAKPOINT = 575;
 
 function Footer() {
@@ -38,9 +40,10 @@ function Footer() {
                             <span>eatly</span>
                         </Link>
                         <Navbar isFooter column={mobileView < MOBILE_BREAKPOINT} />
-                    </div>
+                    </div>                    
                     {mobileView < MOBILE_BREAKPOINT && <SocialMedia />}
                 </div>
+                <Divider color="#818181" />
                 <div className={styles.FooterUnderNav}>
                     <p className={styles.FooterCopyright}>© 2023 EATLY All Rights Reserved.</p>
                     {mobileView >= MOBILE_BREAKPOINT && <SocialMedia />}

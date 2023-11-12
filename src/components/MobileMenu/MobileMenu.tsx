@@ -1,58 +1,25 @@
-import cn from "classnames";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import {TfiClose as Close} from 'react-icons/tfi';
-import styles from "./MobileMenu.module.scss";
+import { RxHamburgerMenu as Burger } from 'react-icons/rx';
+import { Drawer, IconButton } from "@mui/material";
 
-type MobileMenuProps = {
-  onClose: () => void;
-};
 
-function MobileMenu({ onClose }: MobileMenuProps) {
-  const [slide, setSlide] = useState(false);
+function MobileMenu() {
+  const [open, setOpen] = useState(false);
 
-  const handleClose = (
-    event:
-      | React.MouseEvent<HTMLDivElement, MouseEvent>
-      | React.KeyboardEvent<HTMLDivElement>,
-  ) => {
-    const { target } = event;
-    if (
-      !(target as HTMLElement).closest(`.${styles.MobileMenuClose}`) &&
-      (target as HTMLElement).nodeName !== "A"
-    )
-      return;
-
-    setSlide(!slide);
-
-    setTimeout(onClose, 700);
-  };
-
-  useEffect(() => {
-    const slideCurtine = () => setSlide(!slide);
-
-    setTimeout(slideCurtine, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const handleClick = () => {
+    setOpen(!open);
+  }
 
   return (
-    <div
-      className={styles.MobileMenuOverlay}
-      onClick={handleClose}
-      onKeyUp={handleClose}
-      role="button"
-      tabIndex={0}
-    >
-      <div
-        className={cn(styles.MobileMenu, { [styles.MobileMenuVilible]: slide })}
-      >
-        <Navbar mobile />
-
-        <button type="button" className={styles.MobileMenuClose}>
-          <Close size={25} color="#ffffff"/>
-        </button>
-      </div>
-    </div>
+    <>
+      <IconButton onClick={handleClick}>
+        <Burger size={30} color="#282828" />
+      </IconButton>
+      <Drawer anchor="top" open={open} onClose={handleClick} >
+        <Navbar mobile onClose={handleClick} />
+      </Drawer>
+    </>
   );
 }
 
