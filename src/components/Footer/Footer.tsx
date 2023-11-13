@@ -1,55 +1,39 @@
 
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-import Container from "../Container/Container";
+import { Box, Container, Divider, Typography, useMediaQuery } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
+import SocialMedia from "../SocialMedia/SocialMedia";
 
 import Logo from "../../assets/icons/Logo.svg?react";
 
 import styles from './Footer.module.scss';
-import SocialMedia from "../SocialMedia/SocialMedia";
-
-import { Divider } from "@mui/material";
-
-const MOBILE_BREAKPOINT = 575;
 
 function Footer() {
-    const [mobileView, setMobileView] = useState(window.innerWidth);
+    const isMobile = useMediaQuery('(max-width: 575px)');
 
-    useEffect(() => {
-        setMobileView(window.innerWidth);
-
-        const handleResize = () => {
-            setMobileView(window.innerWidth);
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
     return (
-        <footer className={styles.Footer}>
-            <Container>
-                <div className={styles.FooterBody}>
+        <Box component="footer" py={90} bgcolor="customGray.light">
+            <Container maxWidth="lg">
+                <Box className={styles.FooterBody}>
                     <div className={styles.FooterNavigation}>
                         <Link to="/" className='Logo'>
                             <Logo />
                             <span>eatly</span>
                         </Link>
-                        <Navbar isFooter column={mobileView < MOBILE_BREAKPOINT} />
-                    </div>                    
-                    {mobileView < MOBILE_BREAKPOINT && <SocialMedia />}
-                </div>
+                        <Navbar mobile={isMobile} isFooter/>
+                    </div>
+                    {isMobile && <SocialMedia />}
+                </Box>
                 <Divider color="#818181" />
-                <div className={styles.FooterUnderNav}>
-                    <p className={styles.FooterCopyright}>© 2023 EATLY All Rights Reserved.</p>
-                    {mobileView >= MOBILE_BREAKPOINT && <SocialMedia />}
-                </div>
+                <Box display="flex" alignItems="center" justifyContent="space-between" mt={40}>
+                    <Typography color="customGray.dark">
+                        © 2023 EATLY All Rights Reserved.
+                    </Typography>
+                    {!isMobile && <SocialMedia />}
+                </Box>
             </Container>
-        </footer>
+        </Box>
     );
 }
 

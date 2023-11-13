@@ -1,45 +1,28 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import Logo from "../../assets/icons/Logo.svg?react";
-import Container from "../Container/Container";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { Button, Divider } from "@mui/material";
+import { Button, Container, Divider, useMediaQuery } from "@mui/material";
 import styles from "./Header.module.scss";
 
-const MOBILE_BREAKPOINT = 1024;
 
 function Header() {
-  const [mobileView, setMobileView] = useState(window.innerWidth);
-
-  useEffect(() => {
-    setMobileView(window.innerWidth);
-
-    const handleResize = () => {
-      setMobileView(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const isMobile = useMediaQuery('(max-width: 1024px)');
 
   return (
     <header className={styles.Header}>
-      <Container>
+      <Container maxWidth="lg">
         <div className={styles.HeaderBody}>
           <div className={styles.HeaderNavigation}>
             <Link to="/" className='Logo'>
               <Logo />
               <span>eatly</span>
             </Link>
-            {mobileView >= MOBILE_BREAKPOINT && <Navbar />}
+            {!isMobile && <Navbar />}
           </div>
 
           <div className={styles.HeaderButtons}>
-            {mobileView <= MOBILE_BREAKPOINT ? (
+            {isMobile ? (
               <MobileMenu />
             ) : (
               <>

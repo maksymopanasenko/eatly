@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 declare module '@mui/material/styles' {
   interface Palette {
-    greyBorder: {
+    customGray: {
       main: string;
       light: string;
       dark: string;
@@ -10,11 +10,34 @@ declare module '@mui/material/styles' {
   }
 
   interface PaletteOptions {
-    greyBorder: object;
+    customGray: object;
   }
 }
 
 export const theme = createTheme({
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          paddingLeft: 30,
+          paddingRight: 30,
+          '@media (min-width: 600px)': {
+            paddingLeft: 40,
+            paddingRight: 40,
+          },
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          alignItems: 'start',
+          padding: '10px',
+          width: 'auto',
+        },
+      },
+    }
+  },
   palette: {
     mode: 'light',
     primary: {
@@ -23,8 +46,10 @@ export const theme = createTheme({
     secondary: {
       main: '#636363',
     },
-    greyBorder: {
+    customGray: {
       main: '#CBCBCB',
+      dark: '#70798B',
+      light: '#EAEAEA',
     },
   },
   typography: {
@@ -34,6 +59,10 @@ export const theme = createTheme({
       fontSize: 13,
       textTransform: 'capitalize',
       lineHeight: 1.5,
+    },
+    body1: {
+      fontSize: 14,
+      fontWeight: 500,
     },
   },
   spacing: 1,
