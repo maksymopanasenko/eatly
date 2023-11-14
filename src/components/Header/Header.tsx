@@ -1,27 +1,43 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import Logo from "../../assets/icons/Logo.svg?react";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { Button, Container, Divider, useMediaQuery } from "@mui/material";
-import styles from "./Header.module.scss";
+import Logo from "../Logo/Logo";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Divider,
+  useMediaQuery
+} from "@mui/material";
 
 
 function Header() {
   const isMobile = useMediaQuery('(max-width: 1024px)');
 
   return (
-    <header className={styles.Header}>
+    <AppBar position="static" color="transparent" sx={{ boxShadow: "none" }}>
       <Container maxWidth="lg">
-        <div className={styles.HeaderBody}>
-          <div className={styles.HeaderNavigation}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          pt={48}
+          pb={25}
+        >
+          <Box
+            maxWidth={560}
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             <Link to="/" className='Logo'>
               <Logo />
-              <span>eatly</span>
             </Link>
             {!isMobile && <Navbar />}
-          </div>
+          </Box>
 
-          <div className={styles.HeaderButtons}>
+          <Box display="flex" gap={10}>
             {isMobile ? (
               <MobileMenu />
             ) : (
@@ -30,11 +46,11 @@ function Header() {
                 <Button variant="contained" color="primary" sx={{ px: 20, py: 12 }} >Sing up</Button>
               </>
             )}
-          </div>
-        </div>
-        <Divider color="#CBCBCB"/>
+          </Box>
+        </Box>
+        <Divider color="#CBCBCB" />
       </Container>
-    </header>
+    </AppBar>
   );
 }
 

@@ -32,8 +32,9 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           alignItems: 'start',
-          padding: '10px',
+          padding: 5,
           width: 'auto',
+          justifyContent: 'flex-start'
         },
       },
     }
@@ -64,6 +65,11 @@ export const theme = createTheme({
       fontSize: 14,
       fontWeight: 500,
     },
+    h6: {
+      fontFamily: 'Poppins',
+      fontSize: 21,
+      fontWeight: 600,
+    }
   },
   spacing: 1,
   shape: {

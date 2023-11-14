@@ -7,7 +7,7 @@ function Logo() {
             <IconButton>
                 <LogoIcon />
             </IconButton>
-            <Typography component='span'>
+            <Typography variant="h6" component='span' color="primary.main">
                 eatly
             </Typography>
         </Box>

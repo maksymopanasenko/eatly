@@ -4,7 +4,15 @@ import styles from './SocialMedia.module.scss';
 
 function SocialMedia() {
     return (
-        <List sx={{ display: "flex" }}>
+        <List
+            sx={{
+                display: "flex",
+                gap: 10,
+                '@media (min-width: 768px)': {
+                    gap: 34,
+                  },
+            }}
+        >
             <ListItem>
                 <Link href="#">
                     <BiLogoInstagram

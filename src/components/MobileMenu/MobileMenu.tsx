@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { RxHamburgerMenu as Burger } from 'react-icons/rx';
-import { Drawer, IconButton } from "@mui/material";
+import { Box, Drawer, IconButton } from "@mui/material";
 
 
 function MobileMenu() {
@@ -17,9 +17,12 @@ function MobileMenu() {
         <Burger size={30} color="#282828" />
       </IconButton>
       <Drawer anchor="top" open={open} onClose={handleClick} >
-        <Navbar mobile onClose={handleClick} />
+        <Box bgcolor="primary.main" px={10}>
+          <Navbar mobile onClose={handleClick} />
+        </Box>
       </Drawer>
     </>
+
   );
 }
 
