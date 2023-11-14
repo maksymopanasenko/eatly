@@ -1,0 +1,11 @@
+
+.SocialMedia {
+    display: flex;
+    gap: 15px;
+
+    svg {
+        &:hover path{
+            fill: #6C5FBC;
+        }
+    }
+}
