@@ -1,70 +1,67 @@
 import { Link } from "react-router-dom";
-import { createPortal } from "react-dom";
-import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
-import styles from "./Header.module.scss";
-import Logo from "../../assets/icons/Logo.svg?react";
-import Container from "../Container/Container";
-import Burger from "./icons/menu.svg?react";
-import Button from "../Button/Button";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import Logo from "../Logo/Logo";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Divider,
+  Toolbar,
+  useMediaQuery
+} from "@mui/material";
 
-const MOBILE_BREAKPOINT = 1024;
 
 function Header() {
-  const [mobileView, setMobileView] = useState(window.innerWidth);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuOpen = () => setIsMenuOpen(!isMenuOpen);
-
-  useEffect(() => {
-    setMobileView(window.innerWidth);
-
-    const handleResize = () => {
-      setMobileView(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const isMobile = useMediaQuery('(max-width: 1024px)');
 
   return (
-    <header className={styles.Header}>
-      <Container>
-        <div className={styles.HeaderBody}>
-          <div className={styles.HeaderNavigation}>
+    <AppBar position="static" color="transparent" sx={{ boxShadow: "none" }}>
+      <Container maxWidth="lg">
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            pt: 48,
+            pb: 25
+          }}
+        >
+          <Box
+            width={590}
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             <Link to="/" className='Logo'>
               <Logo />
-              <span>eatly</span>
             </Link>
-            {mobileView >= MOBILE_BREAKPOINT && <Navbar />}
-          </div>
+            {!isMobile && <Navbar />}
+          </Box>
 
-          <div className={styles.HeaderButtons}>
-            {mobileView <= MOBILE_BREAKPOINT ? (
-              <Burger onClick={handleMenuOpen} />
+          <Box display="flex" gap={10}>
+            {isMobile ? (
+              <MobileMenu />
             ) : (
               <>
-                <Button style={{ backgroundColor: "unset", color: "#606060" }}>
-                  Login
-                </Button>
                 <Button
-                  style={{ backgroundColor: "#6C5FBC", color: "#F9F9F9" }}
-                >
-                  Sing up
-                </Button>
+                  variant="text"
+                  color="secondary"
+                  sx={{ px: 20, py: 12 }}
+                >Login</Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ px: 20, py: 12 }}
+                >Sing up</Button>
               </>
             )}
-          </div>
-        </div>
+          </Box>
+        </Toolbar>
+        <Divider />
       </Container>
-
-      {isMenuOpen &&
-        createPortal(<MobileMenu onClose={handleMenuOpen} />, document.body)}
-    </header>
+    </AppBar>
   );
 }
 

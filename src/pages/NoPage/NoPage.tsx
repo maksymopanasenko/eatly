@@ -1,5 +1,7 @@
+import { Box } from "@mui/material";
+
 function NoPage() {
-  return <div>NoPage</div>;
+  return <Box>NoPage</Box>;
 }
 
 export default NoPage;

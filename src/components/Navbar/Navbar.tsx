@@ -1,37 +1,71 @@
-import { Link } from "react-router-dom";
+
 import cn from "classnames";
 import styles from "./Navbar.module.scss";
 
+import { List, ListItem, ListItemText } from "@mui/material";
+import { Link } from "react-router-dom";
+
 type NavbarProps = {
-  mobile?: boolean;
-  isFooter?: boolean;
-  column?: boolean;
+  isMobile?: boolean;
+   isLocatedInFooter ?: boolean;
+  onClose?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-function Navbar({ mobile, isFooter, column }: NavbarProps) {
+
+function Navbar({ isMobile,  isLocatedInFooter , onClose }: NavbarProps) {
   return (
-    <ul className={cn(styles.Navbar, { [styles.NavbarMobile]: mobile }, { [styles.NavbarFooter]: isFooter }, { [styles.NavbarColumn]: column })}>
-      {!isFooter &&
-        (<li>
-          <Link to="/menu">Menu</Link>
-        </li>)
+    <List
+      sx={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        bgcolor: isMobile && ! isLocatedInFooter  ? "primary.main" : "unset",
+        justifyContent: "space-between",
+        gap: !isMobile ? 40 : 0,
+        '@media (min-width: 768px)': {
+          gap: !isMobile ? 50 : 0,
+        },
+      }}>
+      {! isLocatedInFooter  &&
+        <ListItem
+          sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
+        >
+          <ListItemText>
+            <Link to="/menu" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })}>Menu</Link>
+          </ListItemText>
+        </ListItem>
       }
-      <li>
-        <Link to="/blog">Blog</Link>
-      </li>
-      <li>
-        <Link to="/pricing">Pricing</Link>
-      </li>
-      {isFooter &&
-        (<li>
-          <Link to="/about">About us</Link>
-        </li>)
+      <ListItem
+        sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
+      >
+        <ListItemText>
+          <Link to="/blog" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })}>Blog</Link>
+        </ListItemText>
+      </ListItem>
+      <ListItem
+        sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
+      >
+        <ListItemText>
+          <Link to="/pricing" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })}>Pricing</Link>
+        </ListItemText>
+      </ListItem>
+      { isLocatedInFooter  &&
+        (<ListItem
+          sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
+        >
+          <ListItemText>
+            <Link to="/about">About us</Link>
+          </ListItemText>
+        </ListItem>)
       }
-      <li>
-        <Link to="/contact">Contact</Link>
-      </li>
-    </ul>
+      <ListItem
+        sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
+      >
+        <ListItemText>
+          <Link to="/contact" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })} >Contact</Link>
+        </ListItemText>
+      </ListItem>
+    </List>
   );
-}
+};
 
 export default Navbar;

@@ -1,26 +1,47 @@
-import Instagram from "./icons/instagram.svg?react";
-import Linkedin from "./icons/linkedin.svg?react";
-import Facebook from "./icons/facebook.svg?react";
-import Twitter from "./icons/twitter.svg?react";
-
+import { BiLogoInstagram, BiLogoLinkedin, BiLogoFacebook, BiLogoTwitter } from 'react-icons/bi';
+import { List, ListItem, Link } from '@mui/material';
 import styles from './SocialMedia.module.scss';
 
 function SocialMedia() {
     return (
-        <ul className={styles.SocialMedia}>
-            <li>
-                <a href="#"><Instagram /></a>
-            </li>
-            <li>
-                <a href="#"><Linkedin /></a>
-            </li>
-            <li>
-                <a href="#"><Facebook /></a>
-            </li>
-            <li>
-                <a href="#"><Twitter /></a>
-            </li>
-        </ul>
+        <List
+            sx={{
+                display: "flex",
+                gap: 10,
+                '@media (min-width: 768px)': {
+                    gap: 34,
+                  },
+            }}
+        >
+            <ListItem>
+                <Link href="#">
+                    <BiLogoInstagram
+                        color="#081420"
+                        className={styles.SocialMedia} />
+                </Link>
+            </ListItem>
+            <ListItem>
+                <Link href="#">
+                    <BiLogoLinkedin
+                        color="#081420"
+                        className={styles.SocialMedia} />
+                </Link>
+            </ListItem>
+            <ListItem>
+                <Link href="#">
+                    <BiLogoFacebook
+                        color="#081420"
+                        className={styles.SocialMedia} />
+                </Link>
+            </ListItem>
+            <ListItem>
+                <Link href="#">
+                    <BiLogoTwitter
+                        color="#081420"
+                        className={styles.SocialMedia} />
+                </Link>
+            </ListItem>
+        </List>
     );
 }
 

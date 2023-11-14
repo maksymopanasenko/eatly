@@ -1,6 +1,7 @@
+import { Box } from "@mui/material";
+
 function About() {
-    return <div>About</div>;
-  }
-  
-  export default About;
-  
+  return <Box>About</Box>;
+}
+
+export default About;
