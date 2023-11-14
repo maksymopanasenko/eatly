@@ -21,11 +21,11 @@ function Footer() {
                         <Link to="/" className='Logo'>
                             <Logo />
                         </Link>
-                        <Navbar mobile={isMobile} isFooter />
+                        <Navbar isMobile={isMobile}  isLocatedInFooter  />
                     </Box>
                     {isMobile && <SocialMedia />}
                 </Box>
-                <Divider color="#818181" />
+                <Divider />
                 <Box
                     display="flex"
                     alignItems="center"

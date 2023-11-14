@@ -18,7 +18,7 @@ function MobileMenu() {
       </IconButton>
       <Drawer anchor="top" open={open} onClose={handleClick} >
         <Box bgcolor="primary.main" px={10}>
-          <Navbar mobile onClose={handleClick} />
+          <Navbar isMobile onClose={handleClick} />
         </Box>
       </Drawer>
     </>

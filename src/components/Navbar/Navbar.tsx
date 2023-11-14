@@ -6,51 +6,51 @@ import { List, ListItem, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
 
 type NavbarProps = {
-  mobile?: boolean;
-  isFooter?: boolean;
+  isMobile?: boolean;
+   isLocatedInFooter ?: boolean;
   onClose?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 
-function Navbar({ mobile, isFooter, onClose }: NavbarProps) {
+function Navbar({ isMobile,  isLocatedInFooter , onClose }: NavbarProps) {
   return (
     <List
       sx={{
         display: "flex",
-        flexDirection: mobile ? "column" : "row",
-        bgcolor: mobile && !isFooter ? "primary.main" : "unset",
+        flexDirection: isMobile ? "column" : "row",
+        bgcolor: isMobile && ! isLocatedInFooter  ? "primary.main" : "unset",
         justifyContent: "space-between",
-        gap: !mobile ? 40 : 0,
+        gap: !isMobile ? 40 : 0,
         '@media (min-width: 768px)': {
-          gap: !mobile ? 50 : 0,
+          gap: !isMobile ? 50 : 0,
         },
       }}>
-      {!isFooter &&
+      {! isLocatedInFooter  &&
         <ListItem
-          sx={{ justifyContent: mobile && !isFooter ? "center" : "flex-start" }}
+          sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
         >
           <ListItemText>
-            <Link to="/menu" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: mobile && !isFooter })}>Menu</Link>
+            <Link to="/menu" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })}>Menu</Link>
           </ListItemText>
         </ListItem>
       }
       <ListItem
-        sx={{ justifyContent: mobile && !isFooter ? "center" : "flex-start" }}
+        sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
       >
         <ListItemText>
-          <Link to="/blog" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: mobile && !isFooter })}>Blog</Link>
+          <Link to="/blog" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })}>Blog</Link>
         </ListItemText>
       </ListItem>
       <ListItem
-        sx={{ justifyContent: mobile && !isFooter ? "center" : "flex-start" }}
+        sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
       >
         <ListItemText>
-          <Link to="/pricing" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: mobile && !isFooter })}>Pricing</Link>
+          <Link to="/pricing" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })}>Pricing</Link>
         </ListItemText>
       </ListItem>
-      {isFooter &&
+      { isLocatedInFooter  &&
         (<ListItem
-          sx={{ justifyContent: mobile && !isFooter ? "center" : "flex-start" }}
+          sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
         >
           <ListItemText>
             <Link to="/about">About us</Link>
@@ -58,10 +58,10 @@ function Navbar({ mobile, isFooter, onClose }: NavbarProps) {
         </ListItem>)
       }
       <ListItem
-        sx={{ justifyContent: mobile && !isFooter ? "center" : "flex-start" }}
+        sx={{ justifyContent: isMobile && ! isLocatedInFooter  ? "center" : "flex-start" }}
       >
         <ListItemText>
-          <Link to="/contact" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: mobile && !isFooter })} >Contact</Link>
+          <Link to="/contact" onClick={onClose} className={cn({ [styles.NavbarMobileLink]: isMobile && ! isLocatedInFooter  })} >Contact</Link>
         </ListItemText>
       </ListItem>
     </List>

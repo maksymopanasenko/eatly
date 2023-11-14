@@ -6,6 +6,7 @@ declare module '@mui/material/styles' {
       main: string;
       light: string;
       dark: string;
+      strong: string;
     };
   }
 
@@ -34,7 +35,14 @@ export const theme = createTheme({
           alignItems: 'start',
           padding: 5,
           width: 'auto',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#CBCBCB",
         },
       },
     }
@@ -51,6 +59,7 @@ export const theme = createTheme({
       main: '#CBCBCB',
       dark: '#70798B',
       light: '#EAEAEA',
+      strong: '#818181',
     },
   },
   typography: {

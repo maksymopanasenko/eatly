@@ -8,6 +8,7 @@ import {
   Button,
   Container,
   Divider,
+  Toolbar,
   useMediaQuery
 } from "@mui/material";
 
@@ -18,15 +19,17 @@ function Header() {
   return (
     <AppBar position="static" color="transparent" sx={{ boxShadow: "none" }}>
       <Container maxWidth="lg">
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          pt={48}
-          pb={25}
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            pt: 48,
+            pb: 25
+          }}
         >
           <Box
-            maxWidth={560}
+            width={590}
             display="flex"
             alignItems="center"
             justifyContent="space-between"
@@ -42,13 +45,21 @@ function Header() {
               <MobileMenu />
             ) : (
               <>
-                <Button variant="text" color="secondary" sx={{ px: 20, py: 12 }} >Login</Button>
-                <Button variant="contained" color="primary" sx={{ px: 20, py: 12 }} >Sing up</Button>
+                <Button
+                  variant="text"
+                  color="secondary"
+                  sx={{ px: 20, py: 12 }}
+                >Login</Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ px: 20, py: 12 }}
+                >Sing up</Button>
               </>
             )}
           </Box>
-        </Box>
-        <Divider color="#CBCBCB" />
+        </Toolbar>
+        <Divider />
       </Container>
     </AppBar>
   );
